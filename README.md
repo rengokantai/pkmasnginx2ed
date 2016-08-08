@@ -51,3 +51,100 @@ types_hash_bucket_size
 variables_hash_max_size
 variables_hash_bucket_size
 ```
+socket directives
+```
+send_timeout
+tcp_nopush
+tcp_nodelay
+```
+
+######Locations – where, when, and how
+Locations may be nested except:  
+When the prefix is = Or When the location is a named location
+
+#####Chapter 4. NGINX as a Reverse Proxy
+######Using error documents to handle
+
+
+#####Chapter 6. The NGINX HTTP Server
+######NGINX's architecture
+master process: reading the configuration, handling sockets, spawning workers, opening log files, compiling embedded Perl scripts, responds to administrative requests via signals.  
+worker process runs in a tight event loop to handle incoming connections.
+######The HTTP core module
+
+######The server directive
+```
+port_in_redirect
+server_name_in_direct
+server_tokens
+```
+log format  (need to memorize)
+```
+log_format combined '$remote_addr - $remote_user [$time_local] '
+'"$request" $status $body_bytes_sent '
+'"$http_referer" "$http_user_agent"';
+```
+autoindex: show directory structure
+
+######Name resolution
+valid:ttl
+```
+server {
+
+  resolver 192.168.100.2 valid=300s;
+
+}
+```
+```
+server {
+
+  resolver 192.168.100.2;
+
+  resolver_timeout 3s;
+```
+(resolver_timeout is only available with a commercial subscription)
+#####Chapter 7. NGINX for the Application Developer
+######Using the addition module
+must enable it at configure time by adding
+```
+--with-http_addition_module
+```
+some modules
+add_bofore_body
+add_after_body
+addition_types
+```
+######The sub module
+enable
+```
+ --with-http_sub_module
+ ```
+ substitute header:
+ ```
+ location / {
+
+  sub_filter </head> '<meta name="frontend" content="web3"></head>';
+
+}
+```
+subsitute multiple times
+```
+location / {
+
+  sub_filter_once off;
+
+  sub_filter '<img src="img/' '<img src="/img/';
+
+}
+```
+type filter, only substituye specific type (sub_filter_types)
+```
+location / {
+
+  sub_filter_types text/css;
+
+  sub_filter url(ke/ 'url(/ke/';
+
+}
+```
+######The xslt module
