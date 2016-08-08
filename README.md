@@ -27,3 +27,27 @@ keepalive_timeout
 msie_padding
 msie_refresh
 ```
+
+file_io directives
+```
+aio
+directio
+directio_alignment
+open_file_cache
+open_file_cache_errors
+open_file_cache_min_uses
+open_file_cache_valid
+postpone_output
+read_ahead
+sendfile
+sendfile_max_chunk
+```
+hash
+```
+server_names_hash_max_size
+server_names_hash_bucket_size
+types_hash_max_size
+types_hash_bucket_size
+variables_hash_max_size
+variables_hash_bucket_size
+```
