@@ -103,6 +103,33 @@ server {
   resolver_timeout 3s;
 ```
 (resolver_timeout is only available with a commercial subscription)
+
+######Restricting access
+
+######Streaming media files
+enable:
+```
+--with-http_flv_module
+--with-http_mp4_module
+```
+directives
+```
+flv
+mp4
+mp4_buffer_size
+mp4_max_buffer_size
+######SPDY and HTTP/2
+```
+http2_chunk_size
+http2_idle_timeout
+http2_max_concurrent_streams
+http2_max_field_size
+http2_max_header_size
+http2_recv_buffer_size
+http2_recv_timeout
+```
+
+
 #####Chapter 7. NGINX for the Application Developer
 ######Using the addition module
 must enable it at configure time by adding
